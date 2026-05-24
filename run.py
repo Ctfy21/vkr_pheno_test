@@ -1,5 +1,6 @@
 import argparse
 import json
+import time
 import os
 from pathlib import Path
 
@@ -68,6 +69,8 @@ def main():
         print(json.dumps(payload, ensure_ascii=False))
         return
 
+    # Demo delay to mimic heavy compute.
+    time.sleep(10)
     results = [analyze_image(path) for path in list_images(input_dir)]
     payload = {
         "solution": "plantcv-contour-test",
